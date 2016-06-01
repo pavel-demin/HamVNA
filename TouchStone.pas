@@ -46,7 +46,12 @@ begin
         Lines.Add(Format('0.0%.8d   %8.6f %7.2f',
           [s11[i].Freq, s11[i].Value.Mag, s11[i].Value.Arg * 180/Pi]));
 
+  {$IFDEF FPC}
+    Lines.SaveToFile(AFileName);
+  {$ELSE}
     Lines.SaveToFile(AFileName, TEncoding.ASCII);
+  {$ENDIF}
+
   finally
     Lines.Free;
   end;

@@ -78,7 +78,11 @@ implementation
 
 uses Main;
 
-{$R *.dfm}
+{$IFDEF FPC}
+  {$R *.lfm}
+{$ELSE}
+  {$R *.dfm}
+{$ENDIF}
 
 
 
@@ -411,7 +415,7 @@ begin
   Sc.LabelStep := AWidth * Sc.Scale / StepCnt;
 
   //special case for degrees
-  if (Sc.UnitsName = '°') and (Sc.LabelStep > Sqrt(10*15)) then
+  if (Sc.UnitsName = 'Â°') and (Sc.LabelStep > Sqrt(10*15)) then
     begin ComputeDegreesScaleParam(Sc, AWidth); Exit; end;
 
   // decompose step into exponent and mantissa
@@ -462,7 +466,7 @@ begin
 end;
 
 
-//scale in degrees, steps of 15° and higher
+//scale in degrees, steps of 15Â° and higher
 procedure TChartFrame.ComputeDegreesScaleParam(Sc: TScale; AWidth: integer);
 type
   TStepInfo = record LabelStep, TickStep, SmallTickStep: integer; end;

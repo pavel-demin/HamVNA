@@ -40,7 +40,11 @@ implementation
 
 uses Main;
 
-{$R *.dfm}
+{$IFDEF FPC}
+  {$R *.lfm}
+{$ELSE}
+  {$R *.dfm}
+{$ENDIF}
 
 constructor TChartSelectionFrame.Create(AOwner: TComponent);
 begin

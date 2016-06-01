@@ -236,7 +236,11 @@ begin
   Move(DiscoveryPacket, Bytes[0], Length(DiscoveryPacket));
 
   for Ip in GetBroadcastAddresses do
+  {$IFDEF FPC}
+    FUdp.Broadcast(Bytes, HERMES_PORT);
+  {$ELSE}
     FUdp.Broadcast(Bytes, HERMES_PORT, Ip);
+  {$ENDIF}
 
   Clipping := false;
   MissedPackets := false;

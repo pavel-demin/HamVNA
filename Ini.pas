@@ -37,7 +37,11 @@ begin
       begin
       AppName := ChangeFileExt(ExtractFileName(ParamStr(0)), '');
       SetLength(Result, MAX_PATH);
+    {$IFDEF FPC}
+      SHGetSpecialFolderPath(0, @Result[1], CSIDL_APPDATA, true);
+    {$ELSE}
       SHGetSpecialFolderPath(Application.Handle, @Result[1], CSIDL_APPDATA, true);
+    {$ENDIF}
       Result := PChar(Result) + '\Afreet\Products\' + AppName + '\';
       try ForceDirectories(Result); except end;
       Result := Result + AppName + '.ini';

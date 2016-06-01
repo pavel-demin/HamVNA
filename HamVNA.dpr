@@ -9,6 +9,9 @@
 program HamVNA;
 
 uses
+{$IFDEF FPC}
+  Interfaces,
+{$ENDIF}
   Forms,
   Main in 'Main.pas' {MainForm},
   ChartFrm in 'ChartFrm.pas' {ChartFrame: TFrame},

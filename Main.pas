@@ -1,4 +1,4 @@
-﻿//This Source Code Form is subject to the terms of the Mozilla Public
+//This Source Code Form is subject to the terms of the Mozilla Public
 //License, v. 2.0. If a copy of the MPL was not distributed with this
 //file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -9,10 +9,14 @@ unit Main;
 interface
 
 uses
+{$IFDEF FPC}
+{$ELSE}
+  PngImage, CategoryButtons, AppEvnts,
+{$ENDIF}
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ImgList, ComCtrls, ToolWin, ExtCtrls, StdCtrls, Buttons, Menus,
-  ChartFrm, VnaCli, Ini, Calibr, CategoryButtons, CheckLst, PngImage,
-  ChartSelFrm, VnaResults, Clipbrd, SmithFrm, AppEvnts, TouchStone, ShellApi,
+  ChartFrm, VnaCli, Ini, Calibr, CheckLst,
+  ChartSelFrm, VnaResults, Clipbrd, SmithFrm, TouchStone, ShellApi,
   AboutDlg, Spin, RlcFrm;
 
 
@@ -21,7 +25,11 @@ const
 
 
 type
+
+  { TMainForm }
+
   TMainForm = class(TForm)
+    ListView1: TListView;
     MainMenu1: TMainMenu;
     File1: TMenuItem;
     ExitMNU: TMenuItem;
@@ -32,6 +40,8 @@ type
     Panel5: TPanel;
     Panel6: TPanel;
     Panel7: TPanel;
+    PaintBox1: TPaintBox;
+    ScrollBox: TScrollBox;
     StatusImage: TImage;
     Chart: TChartFrame;
     ImageList1: TImageList;
@@ -64,7 +74,11 @@ type
     N6: TMenuItem;
     RectangularChartMNU: TMenuItem;
     AboutMNU: TMenuItem;
+  {$IFDEF FPC}
+    ApplicationEvents1: TApplicationProperties;
+  {$ELSE}
     ApplicationEvents1: TApplicationEvents;
+  {$ENDIF}
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     Smith: TSmithChartFrame;
@@ -152,7 +166,11 @@ implementation
 
 uses ProgrDlg, CalibDlg;
 
-{$R *.dfm}
+{$IFDEF FPC}
+  {$R *.lfm}
+{$ELSE}
+  {$R *.dfm}
+{$ENDIF}
 
 
 
@@ -418,7 +436,11 @@ end;
 procedure TMainForm.SaveImage(Box: TPaintBox);
 var
   Bmp: TBitmap;
+{$IFDEF FPC}
+  Png: TPortableNetworkGraphic;
+{$ELSE}
   Png: TPngImage;
+{$ENDIF}
 begin
   if not SaveDialog2.Execute then Exit;
   Bmp := TBitMap.Create;
@@ -435,13 +457,22 @@ end;
 
 procedure TMainForm.SaveAsPng(Bmp: TBitMap; FileName: TFileName);
 var
+{$IFDEF FPC}
+  Png: TPortableNetworkGraphic;
+{$ELSE}
   Png: TPngImage;
+{$ENDIF}
+
 begin
-    Png := TPngImage.Create;
-    try
-      Png.Assign(Bmp);
-      Png.SaveToFile(FileName);
-    finally Png.Free; end;
+{$IFDEF FPC}
+  Png := TPortableNetworkGraphic.Create;
+{$ELSE}
+  Png := TPngImage.Create;
+{$ENDIF}
+  try
+    Png.Assign(Bmp);
+    Png.SaveToFile(FileName);
+  finally Png.Free; end;
 end;
 
 

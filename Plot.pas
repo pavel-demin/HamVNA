@@ -64,7 +64,7 @@ type
 
 const
   UnitsPrefixText: array [TUnitsPrefix] of string =
-    ('f', 'p', 'n', 'µ', 'm', '', 'k', 'M', 'G', 'T');
+    ('f', 'p', 'n', 'Âµ', 'm', '', 'k', 'M', 'G', 'T');
 
 
 

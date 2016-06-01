@@ -46,7 +46,11 @@ implementation
 
 uses Main;
 
-{$R *.DFM}
+{$IFDEF FPC}
+  {$R *.lfm}
+{$ELSE}
+  {$R *.dfm}
+{$ENDIF}
 
 //------------------------------------------------------------------------------
 //                        helper functions
@@ -57,7 +61,11 @@ var
 begin
   Param := 'mailto:' + Address;
   if Subject <> '' then Param := Param + '?subject=' + Subject;
+{$IFDEF FPC}
+  ShellExecute(0, nil, PChar(Param), '', '', SW_SHOWNORMAL);
+{$ELSE}
   ShellExecute(Application.Handle, nil, PChar(Param), '', '', SW_SHOWNORMAL);
+{$ENDIF}
 end;
 
 procedure OpenWebPage(Url: string);

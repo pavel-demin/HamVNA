@@ -9,8 +9,12 @@ unit CalibDlg;
 interface
 
 uses
+{$IFDEF FPC}
+{$ELSE}
+  AppEvnts,
+{$ENDIF}
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Spin, ComCtrls, Buttons, ImgList, AppEvnts,
+  Dialogs, StdCtrls, ExtCtrls, Spin, ComCtrls, Buttons, ImgList,
   VnaCli, Ini;
 
 type
@@ -28,7 +32,11 @@ type
     ImageList1: TImageList;
     LoadBtn: TSpeedButton;
     SaveBtn: TSpeedButton;
+  {$IFDEF FPC}
+    ApplicationEvents1: TApplicationProperties;
+  {$ELSE}
     ApplicationEvents1: TApplicationEvents;
+  {$ENDIF}
     SpeedButton1: TSpeedButton;
     Panel2: TPanel;
     GroupBox2: TGroupBox;
@@ -69,7 +77,11 @@ var
 
 implementation
 
-{$R *.dfm}
+{$IFDEF FPC}
+  {$R *.lfm}
+{$ELSE}
+  {$R *.dfm}
+{$ENDIF}
 
 uses
   Main, ProgrDlg;

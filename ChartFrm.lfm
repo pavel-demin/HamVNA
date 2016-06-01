@@ -1,0 +1,24 @@
+object ChartFrame: TChartFrame
+  Left = 0
+  Top = 0
+  Width = 320
+  Height = 214
+  Color = clBtnFace
+  ParentColor = False
+  TabOrder = 0
+  object PaintBox1: TPaintBox
+    Left = 0
+    Top = 0
+    Width = 320
+    Height = 214
+    Cursor = crCross
+    Align = alClient
+    Color = clBtnFace
+    ParentColor = False
+    OnMouseDown = PaintBox1MouseDown
+    OnMouseLeave = PaintBox1MouseLeave
+    OnMouseMove = PaintBox1MouseMove
+    OnMouseUp = PaintBox1MouseUp
+    OnPaint = PaintBox1Paint
+  end
+end

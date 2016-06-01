@@ -219,7 +219,7 @@ object CalibrationDialog: TCalibrationDialog
       object OpenBtn: TSpeedButton
         Tag = 1
         Left = 38
-        Top = 8
+        Top = 4
         Width = 90
         Height = 22
         Caption = 'Open'
@@ -228,7 +228,7 @@ object CalibrationDialog: TCalibrationDialog
       object CalibrateSBtn: TSpeedButton
         Tag = 2
         Left = 38
-        Top = 36
+        Top = 32
         Width = 90
         Height = 22
         Caption = 'Short'
@@ -237,7 +237,7 @@ object CalibrationDialog: TCalibrationDialog
       object CalibrateLBtn: TSpeedButton
         Tag = 3
         Left = 38
-        Top = 64
+        Top = 60
         Width = 90
         Height = 22
         Caption = 'Load 50Ω'
@@ -245,7 +245,7 @@ object CalibrationDialog: TCalibrationDialog
       end
       object Panel3: TPanel
         Left = 15
-        Top = 11
+        Top = 7
         Width = 16
         Height = 16
         BevelOuter = bvNone
@@ -313,7 +313,7 @@ object CalibrationDialog: TCalibrationDialog
       end
       object Panel4: TPanel
         Left = 15
-        Top = 39
+        Top = 35
         Width = 16
         Height = 16
         BevelOuter = bvNone
@@ -381,7 +381,7 @@ object CalibrationDialog: TCalibrationDialog
       end
       object Panel5: TPanel
         Left = 15
-        Top = 67
+        Top = 63
         Width = 16
         Height = 16
         BevelOuter = bvNone

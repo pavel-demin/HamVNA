@@ -21,37 +21,54 @@ object MainForm: TMainForm
     Left = 634
     Top = 35
     Width = 285
-    Height = 545
+    Height = 525
     Align = alRight
+    BorderWidth = 4
     TabOrder = 0
     object Panel11: TPanel
       Left = 1
-      Top = 19
-      Width = 283
-      Height = 525
+      Width = 278
+      Height = 518
       Align = alClient
+      Anchors = [akTop, akLeft, akRight, akBottom]
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
       inline ChartSelectionFrame1: TChartSelectionFrame
         Left = 0
-        Top = 0
-        Width = 283
-        Height = 347
+        Width = 278
+        Height = 320
         Align = alTop
+        Anchors = [akTop, akLeft, akRight, akBottom]
         TabOrder = 0
         inherited ListView1: TListView
-          Width = 277
-          Height = 342
+          Width = 278
+          Height = 320
           Align = alTop
+          Anchors = [akTop, akLeft, akRight, akBottom]
         end
       end
-      object Panel9: TPanel
-        Left = 0
-        Top = 347
+      object Panel8: TPanel
+        Left = 1
         Width = 283
         Height = 18
         Align = alTop
+        BevelOuter = bvNone
+        Caption = 'Plotted Parameters'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Panel9: TPanel
+        Left = 0
+        Width = 275
+        Height = 18
+        Align = alBottom
+        Anchors = [akLeft, akRight, akBottom]
         BevelOuter = bvNone
         Caption = 'RLC Fit'
         Font.Charset = DEFAULT_CHARSET
@@ -64,13 +81,16 @@ object MainForm: TMainForm
       end
       inline RlcFrame1: TRlcFrame
         Left = 0
-        Top = 365
-        Width = 283
+        Width = 275
         Height = 133
-        Align = alTop
+        Align = alBottom
+        Anchors = [akLeft, akRight, akBottom]
         TabOrder = 2
         inherited Panel1: TPanel
           Width = 283
+          BorderWidth = 0
+          BevelInner = bvLowered
+          BevelOuter = bvNone
           inherited ScrollBox: TScrollBox
             Width = 275
           end
@@ -1253,16 +1273,16 @@ object MainForm: TMainForm
       end
       object Panel10: TPanel
         Left = 0
-        Top = 498
-        Width = 283
+        Width = 275
         Height = 25
-        Align = alTop
+        Align = alBottom
+        Anchors = [akLeft, akRight, akBottom]
         BevelInner = bvLowered
         BevelOuter = bvNone
         TabOrder = 3
         object Label3: TLabel
           Left = 8
-          Top = 9
+          Top = 7
           Width = 28
           Height = 13
           Caption = 'Order'
@@ -1271,7 +1291,7 @@ object MainForm: TMainForm
           Left = 42
           Top = 4
           Width = 103
-          Height = 21
+          Height = 22
           Max = 30
           Min = 1
           Position = 2
@@ -1280,8 +1300,8 @@ object MainForm: TMainForm
           OnChange = TrackBar1Change
         end
         object CheckBox1: TCheckBox
-          Left = 159
-          Top = 5
+          Left = 150
+          Top = 4
           Width = 117
           Height = 17
           Caption = 'Show on Smith Chart'
@@ -1289,22 +1309,6 @@ object MainForm: TMainForm
           OnClick = CheckBox1Click
         end
       end
-    end
-    object Panel8: TPanel
-      Left = 1
-      Top = 1
-      Width = 283
-      Height = 18
-      Align = alTop
-      BevelOuter = bvNone
-      Caption = 'Plotted Parameters'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 1
     end
   end
   object Panel3: TPanel

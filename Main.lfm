@@ -1415,6 +1415,7 @@ object MainForm: TMainForm
     Width = 919
     Height = 35
     Align = alTop
+    RowSize = 10
     TabOrder = 2
     object Panel1: TPanel
       Left = 11

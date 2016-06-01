@@ -1275,6 +1275,7 @@ object MainForm: TMainForm
           Max = 30
           Min = 1
           Position = 2
+          TickStyle = tsNone
           TabOrder = 0
           OnChange = TrackBar1Change
         end
